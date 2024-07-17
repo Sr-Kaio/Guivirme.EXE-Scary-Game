@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6q3te1knoyh3"]
+
+[sub_resource type="Gradient" id="Gradient_vifta"]
+offsets = PackedFloat32Array(0, 0.471751, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.516677, 0.444769, 0.520528, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bplue"]
+gradient = SubResource("Gradient_vifta")
+fill_from = Vector2(0.0769231, 0.045584)
+
+[sub_resource type="Environment" id="Environment_aygus"]
+background_mode = 1
+ambient_light_source = 2
+reflected_light_source = 1
+tonemap_mode = 3
+ssao_enabled = true
+ssao_radius = 1.15
+ssao_intensity = 10.8
+ssao_detail = 0.36
+ssao_horizon = 0.12
+ssil_enabled = true
+ssil_radius = 4.56
+ssil_intensity = 1.21
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 1.0
+sdfgi_min_cell_size = 0.493555
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.9
+glow_strength = 1.17
+glow_bloom = 0.35
+glow_blend_mode = 0
+glow_hdr_threshold = 1.47
+glow_hdr_scale = 1.92
+glow_hdr_luminance_cap = 14.0
+glow_map_strength = 0.74
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0959
+volumetric_fog_albedo = Color(0.430085, 0.568412, 0.640168, 1)
+volumetric_fog_emission = Color(0.0189402, 0.0189402, 0.0189402, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.29
+adjustment_contrast = 1.44
+adjustment_saturation = 1.52
+adjustment_color_correction = SubResource("GradientTexture2D_bplue")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ag0kk"]
+exposure_multiplier = 1.44
+auto_exposure_enabled = true
+auto_exposure_scale = 0.15
+dof_blur_amount = 0.0
+auto_exposure_min_sensitivity = 1600.0
+auto_exposure_max_sensitivity = 200.0
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_aygus")
+camera_attributes = SubResource("CameraAttributesPractical_ag0kk")

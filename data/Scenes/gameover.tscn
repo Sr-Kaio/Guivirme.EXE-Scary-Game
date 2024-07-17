@@ -1,0 +1,153 @@
+[gd_scene load_steps=15 format=3 uid="uid://b0uga5w6b47ok"]
+
+[ext_resource type="FontFile" uid="uid://d2yjn61twd452" path="res://data/Fonts/AUGUSTUS.TTF" id="1_qkteh"]
+[ext_resource type="Texture2D" uid="uid://bnr5lrmi14ygp" path="res://data/Textures/DeathImages/1.png" id="2_pei8l"]
+[ext_resource type="AudioStream" uid="uid://br5x8orpcm130" path="res://data/Audio/scream2.mp3" id="3_vo2pf"]
+[ext_resource type="AudioStream" uid="uid://bfrl76ey01pu" path="res://data/Audio/scream1.mp3" id="4_a1xxr"]
+[ext_resource type="AudioStream" uid="uid://c0gtmcu83hvvb" path="res://data/Audio/scream3.mp3" id="5_sd57k"]
+[ext_resource type="AudioStream" uid="uid://cam8sfhunj2ip" path="res://data/Audio/laugh.mp3" id="6_ln4nm"]
+[ext_resource type="Texture2D" uid="uid://ctenlll2bwmdj" path="res://data/Textures/DeathImages/6.png" id="7_2bymd"]
+[ext_resource type="Texture2D" uid="uid://b6a5a6rtma33c" path="res://data/Textures/DeathImages/5.png" id="8_tlaq3"]
+[ext_resource type="Texture2D" uid="uid://05abywy242ua" path="res://data/Textures/DeathImages/4.png" id="9_wbj2u"]
+[ext_resource type="Texture2D" uid="uid://chmf6rl0hroy6" path="res://data/Textures/DeathImages/3.png" id="10_xaxaj"]
+[ext_resource type="Texture2D" uid="uid://c22pk5rawx17y" path="res://data/Textures/DeathImages/2.png" id="11_nagb4"]
+[ext_resource type="Script" path="res://data/Scripts/Player/GameManager.cs" id="12_qku8o"]
+
+[sub_resource type="Animation" id="Animation_gh25t"]
+resource_name = "jumpscare"
+length = 15.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 3.0,
+"start_offset": 0.95,
+"stream": ExtResource("3_vo2pf")
+}, {
+"end_offset": 3.0,
+"start_offset": 0.95,
+"stream": ExtResource("3_vo2pf")
+}, {
+"end_offset": 3.0,
+"start_offset": 0.95,
+"stream": ExtResource("3_vo2pf")
+}, {
+"end_offset": 0.0,
+"start_offset": 1.22,
+"stream": ExtResource("4_a1xxr")
+}, {
+"end_offset": 0.0,
+"start_offset": 1.22,
+"stream": ExtResource("4_a1xxr")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_sd57k")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_ln4nm")
+}],
+"times": PackedFloat32Array(0, 1.5, 3, 4.47, 6.1, 7.9, 10.4)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6, 3.1, 4.5, 6.1, 7.9, 10.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_2bymd"), ExtResource("8_tlaq3"), ExtResource("9_wbj2u"), ExtResource("10_xaxaj"), ExtResource("11_nagb4"), ExtResource("2_pei8l"), ExtResource("2_pei8l")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 10.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"CloseGam"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oelww"]
+_data = {
+"jumpscare": SubResource("Animation_gh25t")
+}
+
+[node name="Gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qkteh")
+theme_override_font_sizes/font_size = 41
+text = "So pode existir apenas um..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pei8l")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oelww")
+}
+autoplay = "jumpscare"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("12_qku8o")

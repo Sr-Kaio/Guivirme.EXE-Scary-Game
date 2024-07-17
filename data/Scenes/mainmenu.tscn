@@ -1,0 +1,262 @@
+[gd_scene load_steps=17 format=3 uid="uid://bxemav28as2v3"]
+
+[ext_resource type="Texture2D" uid="uid://cvflgwkc45d6s" path="res://data/Textures/logo.png" id="1_scbwx"]
+[ext_resource type="Script" path="res://data/Scripts/Manager/MainMenuManager.cs" id="1_uv6sb"]
+[ext_resource type="Texture2D" uid="uid://rkqm1cd0ulvh" path="res://data/Textures/vig.png" id="3_8psq1"]
+[ext_resource type="FontFile" uid="uid://d2yjn61twd452" path="res://data/Fonts/AUGUSTUS.TTF" id="3_ilm7x"]
+[ext_resource type="AudioStream" uid="uid://dkffbuckjngyb" path="res://data/Audio/clock.mp3" id="3_sbnwr"]
+[ext_resource type="AudioStream" uid="uid://dc35islipflr2" path="res://data/Audio/SCARYSONG.mp3" id="4_iplw2"]
+[ext_resource type="AudioStream" uid="uid://cam8sfhunj2ip" path="res://data/Audio/laugh.mp3" id="5_smlea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nacbv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hyint"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3e7lu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fg7id"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k563s"]
+
+[sub_resource type="Animation" id="Animation_g1tjp"]
+resource_name = "end"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.788235, 0, 0.14902, 0.541176), Color(0.38037, 8.42288e-07, 1.20327e-07, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"goToGame"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -30.0]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SFX")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0867022,
+"stream": ExtResource("3_sbnwr")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_smlea")
+}],
+"times": PackedFloat32Array(0, 2.5)
+}
+tracks/4/use_blend = true
+
+[sub_resource type="Animation" id="Animation_qiioq"]
+resource_name = "init"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["loop", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5b8ww"]
+resource_name = "loop"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.31864),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.505882)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6tfny"]
+_data = {
+"end": SubResource("Animation_g1tjp"),
+"init": SubResource("Animation_qiioq"),
+"loop": SubResource("Animation_5b8ww")
+}
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("animationPlayer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uv6sb")
+animationPlayer = NodePath("AnimationPlayer")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180455, 0.0231245, 0.000999916, 1)
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.521
+anchor_top = 0.5
+anchor_right = 0.521
+anchor_bottom = 0.5
+offset_left = -600.192
+offset_top = -324.0
+offset_right = 551.808
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_scbwx")
+expand_mode = 1
+
+[node name="Label" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.362
+anchor_top = 0.775
+anchor_right = 0.64
+anchor_bottom = 0.823
+offset_left = 85.976
+offset_top = -0.200012
+offset_right = -85.28
+offset_bottom = -0.304016
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.533333)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.533333)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.533333)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 0.533333)
+theme_override_fonts/font = ExtResource("3_ilm7x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nacbv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hyint")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3e7lu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fg7id")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k563s")
+text = "Pressione qualquer tecla para COMEÇAR"
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6tfny")
+}
+autoplay = "init"
+
+[node name="Vig" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8psq1")
+expand_mode = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iplw2")
+volume_db = -30.0
+autoplay = true
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+autoplay = true
