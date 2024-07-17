@@ -1,0 +1,19 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://d262hq0pe8ujd"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_w6sjg"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_jgcqp"]
+resource_name = "Delay"
+tap1_level_db = -8.05
+
+[sub_resource type="AudioEffectNotchFilter" id="AudioEffectNotchFilter_g64kc"]
+resource_name = "NotchFilter"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_w6sjg")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectDelay_jgcqp")
+bus/0/effect/1/enabled = true
+bus/0/effect/2/effect = SubResource("AudioEffectNotchFilter_g64kc")
+bus/0/effect/2/enabled = true

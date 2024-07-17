@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0mbkh6sf6yxh"]
+
+[ext_resource type="FontFile" uid="uid://d2yjn61twd452" path="res://data/Fonts/AUGUSTUS.TTF" id="1_u1ga1"]
+[ext_resource type="Script" path="res://data/Scripts/Player/GameManager.cs" id="2_xacoq"]
+[ext_resource type="AudioStream" uid="uid://bmyqbv7upjxc7" path="res://data/Audio/lock.mp3" id="3_j8jsx"]
+[ext_resource type="AudioStream" uid="uid://6q74mf8n4hy" path="res://data/Audio/Sonic.exe Sound Effects.mp3" id="4_gjom8"]
+[ext_resource type="AudioStream" uid="uid://cam8sfhunj2ip" path="res://data/Audio/laugh.mp3" id="5_wigmc"]
+
+[sub_resource type="Animation" id="Animation_b3w3a"]
+resource_name = "win"
+length = 12.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 4.34379,
+"stream": ExtResource("3_j8jsx")
+}, {
+"end_offset": 79.4456,
+"start_offset": 5.03085,
+"stream": ExtResource("4_gjom8")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_wigmc")
+}],
+"times": PackedFloat32Array(0, 3.2, 7.1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Você escapou de mim... Por enquanto", "Te vejo no round dois C:"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.3, 3.6, 9.6, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(12),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"CloseGam"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkgk2"]
+_data = {
+"win": SubResource("Animation_b3w3a")
+}
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_u1ga1")
+theme_override_font_sizes/font_size = 41
+text = "Te vejo no round dois C:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_xacoq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dkgk2")
+}
+autoplay = "win"
